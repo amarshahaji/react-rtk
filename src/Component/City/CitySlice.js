@@ -8,7 +8,6 @@ export const citySlice = createSlice({
             state.push(action.payload);
          },
         deleteCity: (state, action) => {
-            console.log("Reducer",action.payload);
             state.splice(action.payload, 1);
         },
         clearAllCity: () => { 
@@ -16,8 +15,6 @@ export const citySlice = createSlice({
         }
     },
 });
-
-console.log(citySlice)
 
 export const { addCity, deleteCity, clearAllCity } = citySlice.actions;
 

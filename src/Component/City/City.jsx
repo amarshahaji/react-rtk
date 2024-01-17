@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import Chance from 'chance';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCity, deleteCity } from './CitySlice';
+import { addCity, deleteCity, clearAllCity } from './CitySlice';
 
 function City() {
     const chance = Chance();
@@ -12,7 +12,6 @@ function City() {
     }, [chance, dispatch])
 
     const handleDelete = (index) => {
-        console.log(index)
         dispatch(deleteCity(index));
     };
 
@@ -25,13 +24,14 @@ function City() {
             <ul>
                 {
                     data.map((city, i) => {
-                        return <li key={i}>
+                        return <li key={city}>
                             {city}
                             <button onClick={()=>handleDelete(i)}>Delete</button>
                         </li>
                     })
                 }
             </ul>
+            <button onClick={()=> dispatch(clearAllCity())}>Clear All Cities</button>
         </div>
     </div>
 }
